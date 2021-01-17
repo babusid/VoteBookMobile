@@ -7,7 +7,7 @@ import rootStore from "../__components__/__redux__/store.js"
 export default function MapScreen(){
     return(
         <View>
-            <Text>This is where the Map Screen should be exported from</Text>
+            <Text>This is where the Reporting Screen should be exported from</Text>
         </View>
     )
 }

@@ -9,7 +9,7 @@ import { createStore, applyMiddleware } from "redux"
 function rootReducer(){
     return (
         {
-
+            
         }
     )
 }
