@@ -7,6 +7,7 @@ import { createStackNavigator } from '@react-navigation/stack'
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
 import BallotPlanner from './__screens__/BallotPlanner'
 import MapScreen from './__screens__/Map'
+import LoginScreen from './__screens__/Login.js'
 
 const rootStack = createStackNavigator();
 const rootTab = createBottomTabNavigator();
@@ -18,7 +19,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <rootStack.Navigator>
-        <rootStack.Screen component={rootTabNav()}/>
+        <rootStack.Screen component={LoginScreen} name="LoginScreen" />
       </rootStack.Navigator>
     </NavigationContainer>
   );
