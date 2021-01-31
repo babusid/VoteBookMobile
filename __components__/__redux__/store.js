@@ -1,5 +1,9 @@
 import { createStore, applyMiddleware } from "redux"
+<<<<<<< HEAD
 import {zipcodeReducer} from './Reducers/zipcodeReducer.js'
+=======
+import { zipcodeReducer } from './Reducers/zipcodeReducer'
+>>>>>>> 891a74e6e2cd879887924ca3f6c5f40bb2c629be
 
 /**
  * @brief This function is the Root Reducer for our Redux Store.
@@ -30,6 +34,6 @@ function reduxLogger({ getState }){
 
 /**
  * @brief This is the root store of our application, that should be imported into every file that requires dealing with the state.
- * The root reducer of this store is contained in store.js, and each reducer written for specific state actions must be linked into this root reducer.
+ * The root reducer of this store is contained in store.js, and each reducer written for specific state actions must be linked into the root reducer.
  */
 export const rootStore = createStore(rootReducer, {}, /*applyMiddleware(reduxLogger)*/)
