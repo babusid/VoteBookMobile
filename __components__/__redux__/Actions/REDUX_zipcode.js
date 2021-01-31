@@ -1,4 +1,4 @@
-import { rootstore } from store.js
+import { rootStore } from '../store.js'
 import { createAction } from '@reduxjs/toolkit'
 
 
@@ -8,12 +8,11 @@ export function dispatchZipcode( input ){
         type: 'zipcodeDispatch',
         payload: input, 
       }
-    rootstore.dispatch(zipcodeDispatch);
-      
+    rootStore.dispatch(zipcodeDispatch);   
 }
 
 export function getZipcode(){
-  var state = rootstore.getState().zipcode;
+  var state = rootStore.getState().zipcode;
 
   return String(state);
 }
