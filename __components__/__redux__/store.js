@@ -6,10 +6,10 @@ import { createStore, applyMiddleware } from "redux"
  * must be linked into this reducer. Each reducer should be linked to the root reducer 
  * by adding a field to the returned JSON object in the form of **"substatename: substatereducer".**
  */
-function rootReducer(){
+function rootReducer(state, action){
     return (
         {
-            
+            zipcode: zipcodeReducer(state.zipcode, action)
         }
     )
 }
