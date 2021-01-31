@@ -1,4 +1,5 @@
 import { createStore, applyMiddleware } from "redux"
+import {zipcodeReducer} from './Reducers/zipcodeReducer.js'
 
 /**
  * @brief This function is the Root Reducer for our Redux Store.
