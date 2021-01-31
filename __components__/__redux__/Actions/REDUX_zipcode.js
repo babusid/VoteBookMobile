@@ -1,23 +1,18 @@
 import { rootStore } from '../store.js'
-<<<<<<< HEAD
-
-=======
 import { createAction } from '@reduxjs/toolkit'
->>>>>>> 891a74e6e2cd879887924ca3f6c5f40bb2c629be
 
-
+/**
+ * 
+ * @brief this function essentially takes in the input given from someone that is on the app. After that it uses 
+ * the input to create a "state" of the data, AKA, what the current zipcode is. After this is defined, it exports
+ */
 export function dispatchZipcode( input ){
 
     const zipcodeDispatch = {
         type: 'zipcodeDispatch',
         payload: input, 
       }
-<<<<<<< HEAD
-    rootStore.dispatch(zipcodeDispatch);
-      
-=======
     rootStore.dispatch(zipcodeDispatch);   
->>>>>>> 891a74e6e2cd879887924ca3f6c5f40bb2c629be
 }
 
 export function getZipcode(){
