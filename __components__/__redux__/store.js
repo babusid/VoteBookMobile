@@ -1,4 +1,5 @@
 import { createStore, applyMiddleware } from "redux"
+import { mapPinsReducer } from "./Reducers/mapPinsReducer"
 
 /**
  * @brief This function is the Root Reducer for our Redux Store.
@@ -6,10 +7,10 @@ import { createStore, applyMiddleware } from "redux"
  * must be linked into this reducer. Each reducer should be linked to the root reducer 
  * by adding a field to the returned JSON object in the form of **"substatename: substatereducer".**
  */
-function rootReducer(){
+function rootReducer(state,action){
     return (
         {
-            
+            mapPins:mapPinsReducer(state.mapPins,action)
         }
     )
 }

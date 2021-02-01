@@ -1,5 +1,4 @@
 import {rootStore} from '../store.js'
-import {createAction} from '@reduxjs/toolkit'
 import { ArrayThrowException } from '../../../__error'
 
 export function dispatchMapPins( input ){
