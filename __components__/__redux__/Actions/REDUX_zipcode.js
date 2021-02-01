@@ -8,12 +8,20 @@ import { createAction } from '@reduxjs/toolkit'
  * it to the rootStore and stores it.
  */
 export function dispatchZipcode( input ){
-
+  var stringInput=input.toString();
+    if(stringInput.length>5){
+      return "You have inputted an incorrect zipcode."
+    }
+    if(Number.isInteger(input)==false){
+      return "You have inputted an incorrect zipcoide"
+    }
+    else{
     const zipcodeDispatch = {
         type: 'zipcodeDispatch',
         payload: input, 
       }
     rootStore.dispatch(zipcodeDispatch);   
+    }
 }
 
 /**
