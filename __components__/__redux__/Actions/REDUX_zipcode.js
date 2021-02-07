@@ -1,27 +1,30 @@
 import { rootStore } from '../store.js'
 import { createAction } from '@reduxjs/toolkit'
+import {IntThrowException,zipCodeLengthException} from '../../../__error'
+
 
 /**
  * 
  * @brief this function essentially takes in the input given from someone that is on the app. After that it uses 
  * the input to create a "state" of the data, AKA, what the current zipcode is. After this is defined, it exports
  * it to the rootStore and stores it.
+ * @param {Integer} input Zipcode as an 5 digit integer
  */
 export function dispatchZipcode( input ){
+  if (!Number.isInteger(input)){
+    throw IntThrowException;
+  }
   var stringInput=input.toString();
-    if(stringInput.length>5){
-      return "You have inputted an incorrect zipcode."
+  if(stringInput.length>5){
+    throw zipCodeLengthException;
+  }
+  else{
+  const zipcodeDispatch = {
+      type: 'zipcodeDispatch',
+      payload: input, 
     }
-    if(Number.isInteger(input)==false){
-      return "You have inputted an incorrect zipcoide"
-    }
-    else{
-    const zipcodeDispatch = {
-        type: 'zipcodeDispatch',
-        payload: input, 
-      }
-    rootStore.dispatch(zipcodeDispatch);   
-    }
+  rootStore.dispatch(zipcodeDispatch);   
+  }
 }
 
 /**

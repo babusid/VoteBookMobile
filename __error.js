@@ -6,3 +6,5 @@ export const ObjectThrowException = "Input parameter is not an object.";
 export const StringThrowException = "Input parameter is not a String";
 /**@brief throw this exception for any function that is expecting an integer and does not get one */
 export const IntThrowException = "Input Parameter is not an integer";
+/**@brief throw this exception for the zipcode  */
+export const zipCodeLengthException = "Zipcode is incorrect length";
