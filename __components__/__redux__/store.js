@@ -13,7 +13,7 @@ import { mapPinsReducer } from "./Reducers/mapPinsReducer"
 function rootReducer(state, action){
     return (
         {
-            zipcode: zipcodeReducer(state.zipcode, action)
+            zipcode: zipcodeReducer(state.zipcode, action),
             mapPins:mapPinsReducer(state.mapPins,action)
         }
     )
