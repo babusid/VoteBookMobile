@@ -15,7 +15,7 @@ export function dispatchZipcode( input ){
     throw IntThrowException;
   }
   var stringInput=input.toString();
-  if(stringInput.length>5){
+  if(stringInput.length>5||stringInput.length<5){
     throw zipCodeLengthException;
   }
   else{
