@@ -19,7 +19,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <rootStack.Navigator>
-        <rootStack.Screen component={LoginScreen} name="LoginScreen" />
+        <rootStack.Screen component={LoginScreen} name="LoginScreen" options={{title: "Login to Votebook!"}} />
       </rootStack.Navigator>
     </NavigationContainer>
   );
