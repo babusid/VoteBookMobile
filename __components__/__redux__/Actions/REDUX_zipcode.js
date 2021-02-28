@@ -12,11 +12,11 @@ import {IntThrowException,zipCodeLengthException} from '../../../__error'
  */
 export function dispatchZipcode( input ){
   if (!Number.isInteger(input)){
-    throw IntThrowException;
+    throw TypeError;
   }
   var stringInput=input.toString();
   if(stringInput.length>5||stringInput.length<5){
-    throw zipCodeLengthException;
+    throw RangeError;
   }
   else{
   const zipcodeDispatch = {
