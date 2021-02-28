@@ -1,11 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View, ScrollView, Image, Button, Keyboard, KeyboardAvoidingView } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, Image, Button, Keyboard, KeyboardAvoidingView, Alert } from 'react-native';
 import { Card, Input } from 'react-native-elements';
 import {dispatchZipcode, getZipcode} from '../__components__/__redux__/Actions/REDUX_zipcode.js'
 import ImagePlaceholder from './Images/ImagePlaceholder.jpg';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack'; 
 
 /**
  * @brief
@@ -30,7 +28,15 @@ export default function LoginScreen(){
                         onSubmitEditing={(input)=>{
                             var text = input.nativeEvent.text;
                             text = parseInt(text);
-                            dispatchZipcode(text); 
+                            try{
+                                dispatchZipcode(text);
+                            }catch(err){
+                                Alert.alert(
+                                    "Invalid Zipcode",
+                                    "Please input a valid zipcode."
+                                );
+                            }
+                             
                         }}
                     />
                 </View>
@@ -38,7 +44,6 @@ export default function LoginScreen(){
                     <Button 
                         color='blue' 
                         title='Enter'
-                        
                     />
                 </View>
             </Card>
