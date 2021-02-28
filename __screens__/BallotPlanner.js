@@ -13,9 +13,9 @@ import rootStore from "../__components__/__redux__/store.js"
  */
 
 export default function BallotPlanner(){
-    return(
+    return (
         <View>
             <Text>This is where the BallotPlanner Screen should be exported from</Text>
         </View>
-    )
+    );
 }
