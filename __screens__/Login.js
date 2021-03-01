@@ -9,7 +9,7 @@ import ImagePlaceholder from './Images/ImagePlaceholder.jpg';
  * @brief - Login Screen component for the App. Uses Zipcode Redux Package to store the zipcode input by the user.
  * @returns - React Native Component
  */
-export default function LoginScreen(){
+export default function LoginScreen({ navigation }){
     return(
         <KeyboardAvoidingView behavior={"padding"}>
         <ScrollView>
@@ -28,13 +28,13 @@ export default function LoginScreen(){
                             text = parseInt(text);
                             try{
                                 dispatchZipcode(text);
+                                navigation.navigate("root");
                             }catch(err){
                                 Alert.alert(
                                     "Invalid Zipcode",
                                     "Please input a valid zipcode."
                                 );
-                            }
-                             
+                            } 
                         }}
                     />
                 </View>

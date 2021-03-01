@@ -19,6 +19,7 @@ export default function App() {
   return(
     <NavigationContainer>
       <rootStack.Navigator headerMode={false}>
+        <rootStack.Screen name="LoginScreen" component={LoginScreen}/>
         <rootStack.Screen name="root" component={rootTabNav}/>
       </rootStack.Navigator>
     </NavigationContainer>
