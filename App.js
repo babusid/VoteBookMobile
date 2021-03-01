@@ -16,10 +16,10 @@ const rootTab = createBottomTabNavigator();
  * @brief Main Application export. Should be used to render the root navigators and call screens as needed. 
  */
 export default function App() {
-  return (
+  return(
     <NavigationContainer>
-      <rootStack.Navigator>
-        <rootStack.Screen component={LoginScreen} name="LoginScreen" options={{title: "Login to Votebook!"}} />
+      <rootStack.Navigator headerMode={false}>
+        <rootStack.Screen name="root" component={rootTabNav}/>
       </rootStack.Navigator>
     </NavigationContainer>
   );
@@ -32,9 +32,9 @@ export default function App() {
 function rootTabNav(){
   return(
     <rootTab.Navigator>
-      <rootTab.Screen component={BallotPlanner()}/>
-      <rootTab.Screen component={MapScreen()}/>
+      <rootTab.Screen name="ballotPlanner" component={BallotPlanner} options={{title: "Ballot Planner"}}/>
+      <rootTab.Screen name="mapScreen" component={MapScreen}/>
     </rootTab.Navigator>
-  )
+  );
 }
 

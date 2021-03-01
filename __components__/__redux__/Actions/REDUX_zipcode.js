@@ -30,8 +30,7 @@ export function dispatchZipcode( input ){
 }
 
 /**
- * @brief this function essentially just returns the zipcode that has been inputed. It takes the data from the rootstore
- * and returns it in a string.
+ * @brief this function essentially just returns the zipcode that has been inputed
  */
 export function getZipcode(){
   var state = rootStore.getState().zipcode;
