@@ -6,10 +6,8 @@ import {dispatchZipcode, getZipcode} from '../__components__/__redux__/Actions/R
 import ImagePlaceholder from './Images/ImagePlaceholder.jpg';
 
 /**
- * @brief
- * 
- * @returns
- * 
+ * @brief - Login Screen component for the App. Uses Zipcode Redux Package to store the zipcode input by the user.
+ * @returns - React Native Component
  */
 export default function LoginScreen(){
     return(
