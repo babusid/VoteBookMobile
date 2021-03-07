@@ -9,14 +9,16 @@ import {IntThrowException,zipCodeLengthException} from '../../../__error'
  * the input to create a "state" of the data, AKA, what the current zipcode is. After this is defined, it exports
  * it to the rootStore and stores it.
  * @param {Integer} input Zipcode as an 5 digit integer
+ * @throws TypeError if input is not int
+ * @throws RangeError if input is not 5 digits 
  */
 export function dispatchZipcode( input ){
   if (!Number.isInteger(input)){
-    throw IntThrowException;
+    throw TypeError;
   }
   var stringInput=input.toString();
   if(stringInput.length>5||stringInput.length<5){
-    throw zipCodeLengthException;
+    throw RangeError;
   }
   else{
   const zipcodeDispatch = {
