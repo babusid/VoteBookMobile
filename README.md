@@ -8,4 +8,4 @@
 ##Project Management
 - This repo will have issue tickets created on it that are linked with our Jira project board so monitor the issues tab on Github (theres a mobile app), and monitor the Jira board (surprise there's a mobile app).
 - All branches must be be linked to both the github issue ticket and the Jira issue ticket
-- Documentation will be written within your code in standard JSDOC form, and in the form of Confluence pages that you MUST fill out
+- Documentation will be written within your code in standard JSDOC form.
