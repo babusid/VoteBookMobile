@@ -6,7 +6,7 @@ import { getMapPins } from '../__redux__/Actions/REDUX_mapPins.js';
 
 export const mapMarkers=(props)=>{
     //var markers = getMapPins();
-    var markers = [{latitude: 1, longitude: 2, siteID:0},{latitude: 2, longitude:1,siteID:1}];
+    var markers = [{title:"Location 1", latitude: 1, longitude: 2, siteID:0, waitTime:1},{title:"Location 2", latitude: 2, longitude:1,siteID:1, waitTime: 1.5}];
     distance = (lat1, lon1, lat2, lon2, unit) => { //calculates distance given two coordinate pairs
         if ((lat1 == lat2) && (lon1 == lon2)) {
           return(0);
@@ -36,8 +36,28 @@ export const mapMarkers=(props)=>{
                     key={marker.siteID}
                     coordinate={{ latitude: marker.latitude, longitude: marker.longitude }}
                 >
+                  <Callout>
+                    <Text style={styles.title}>{marker.title}</Text>
+                    <Text>Wait Time: {marker.waitTime} Hours</Text>
+                    <Button title={"Report Wait Time"}/>
+                  </Callout>
                 </Marker>
             }
         )
     )
 }
+
+const styles = StyleSheet.create({
+  title:{
+    textAlign: "center",
+    fontWeight: "bold",
+    fontSize: 15,
+    textAlignVertical: "top",
+  },
+  button:{
+    margin: 10,
+    padding: 10,
+    width: 100,
+    height: 100,
+  }
+})
