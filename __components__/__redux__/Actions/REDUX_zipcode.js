@@ -35,7 +35,7 @@ export function dispatchZipcode( input ){
 export function getZipcode(){
   var state = rootStore.getState().zipcode;
   if (state==undefined){
-    return null;
+    throw null;
   }
   else{
     return (state);

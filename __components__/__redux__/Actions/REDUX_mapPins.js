@@ -24,7 +24,7 @@ export function dispatchMapPins( input ){
 export function getMapPins(){
     var state = rootStore.getState().mapPins;
     if (state==undefined){
-        return null;
+        throw null;
     }
     else{
         return (state);

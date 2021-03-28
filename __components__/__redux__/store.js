@@ -60,4 +60,4 @@ function reduxLogger({ getState }){
  * @brief This is the root store of our application, that should be imported into every file that requires dealing with the state.
  * The root reducer of this store is contained in store.js, and each reducer written for specific state actions must be linked into the root reducer.
  */
-export const rootStorePersisted = configureStore();
+export const rootStore = configureStore();
