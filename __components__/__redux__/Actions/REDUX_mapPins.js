@@ -24,7 +24,7 @@ export function dispatchMapPins( input ){
  * @brief This function retrieves and returns the stored array of map pins
  */
 export function getMapPins(){
-    var state = rootStore.getState().mapPins;
+    var state = rootStore.store.getState().mapPins;
     if (state==undefined){
         throw null;
     }
