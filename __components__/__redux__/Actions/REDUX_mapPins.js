@@ -8,6 +8,7 @@ import { ArrayThrowException } from '../../../__error'
  * 
  */
 export function dispatchMapPins( input ){
+    persistor.pause(); 
     if (!Array.isArray(input)){
         throw ArrayThrowException;
     };
@@ -15,13 +16,19 @@ export function dispatchMapPins( input ){
         type: 'mapPinsDispatch',
         payload: input
     };
-    rootStore.dispatch(mapPinsDispatch);
+    rootStore.store.dispatch(mapPinsDispatch);
+    persistor.persist(); 
 }
 
 /**
  * @brief This function retrieves and returns the stored array of map pins
  */
 export function getMapPins(){
-    var state = rootStore.getState().mapPins;
-    return (state)
+    var state = rootStore.store.getState().mapPins;
+    if (state==undefined){
+        throw null;
+    }
+    else{
+        return (state);
+    }
 }
