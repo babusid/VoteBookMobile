@@ -8,7 +8,7 @@ import {IntThrowException,zipCodeLengthException} from '../../../__error'
  * @brief this function essentially takes in the input given from someone that is on the app. After that it uses 
  * the input to create a "state" of the data, AKA, what the current zipcode is. After this is defined, it exports
  * it to the rootStore and stores it.
- * @param {Integer} input Zipcode as an 5 digit integer
+ * @param {Number} input Zipcode as an 5 digit integer
  * @throws TypeError if input is not int
  * @throws RangeError if input is not 5 digits 
  */

@@ -1,6 +1,6 @@
 import { dispatchZipcode, getZipcode } from "../__components__/__redux__/Actions/REDUX_zipcode";
 import { rootStore } from "../__components__/__redux__/store"
-import { jest } from "@jest/globals";
+import { jest, test, expect } from "@jest/globals";
 
 test('dispatch + getDispatch match?', ()=>{
     dispatchZipcode(37076)
