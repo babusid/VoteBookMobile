@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, Dimensions } from 'react-native';
 import MapView from 'react-native-maps';
-import {mapMarkers} from '../__components__/__reactComponents__/mapMarkers';
+import {MapMarkers} from '../__components__/__reactComponents__/mapMarkers';
 
 
 export default function MapScreen(){
@@ -21,7 +21,7 @@ export default function MapScreen(){
                       // of the phone to center map at user's location
                     }} 
             >
-                <mapMarkers/>
+                <MapMarkers/>
             </MapView>
         </View>
     )
