@@ -33,9 +33,6 @@ let runonceExp = false;
  * @param {import('@react-native-community/netinfo').NetInfoState} netinfo object from calling component to let snapshot know whether it should run at all
  */
 export async function FirebaseDataSnapshot(netinfo){
-    // const netinfo = useNetInfo();
-    // console.log(netinfo); //DEBUG
-    //const netinfo = {isConnected:true}; //DEBUG
     if(netinfo.isConnected==true){  
         console.log("here")
         const zipcode = getZipcode().toString();
@@ -53,8 +50,12 @@ export async function FirebaseDataSnapshot(netinfo){
                 dispatchMapPins(blank);
                 return ; //nothing important put into the store
             }
-            if(qres.docs!= getMapPins()){ 
-                dispatchMapPins(qres.docs); 
+            const dataArr = qres.forEach((doc)=>{
+                return doc.data();
+            })
+            if(dataArr!= getMapPins()){ 
+                dispatchMapPins(dataArr); 
+                console.log(getMapPins());
                 return;
             }
         });
@@ -66,7 +67,7 @@ export async function FirebaseDataSnapshot(netinfo){
 
 
 /**
- * @brief This function will take **ONE** snapshot of our Database and push it to the redux store.
+ * @brief This function will take **ONE** snapshot of our Database and push it to the redux store. **THIS FUNCTION IS EXPERIMENTAL AND NOT GUARANTEED TO BE STABLE OR FUNCTIONAL**
  * @warning This function will have to be **called repeatedly to function as a listener**, as it internally uses a snapshot method to get the data from the server. As such, it should be called within an effect method of the calling component
  * @returns {Boolean} true or false depending on whether new data is pushed to the store
  */
