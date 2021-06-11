@@ -31,7 +31,7 @@ export function getMapPins(){
  * @brief This function attaches a listener to the map pins array portion of our redux store, and calls a provided function on the array each time a listener event occurs.
  * @param {Function} eventHandler A callback function to call on the stored map pins every time the listener detects an event. AKA when event detected,
  *  eventHandler([..]) with the array of map pins that is stored
- * @returns {Function} A cleanup function
+ * @returns {import('redux').Unsubscribe} A cleanup function to remove the listener
  */
 export function listenMapPins(eventHandler){
     const __listenmappins = () => {
