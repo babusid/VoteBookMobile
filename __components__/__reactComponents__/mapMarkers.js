@@ -1,4 +1,4 @@
-import React, { useState} from 'react';
+import React, { useEffect, useState} from 'react';
 import { StyleSheet, Text, Button } from 'react-native';
 import { Marker, Callout } from 'react-native-maps';
 import { getMapPins, listenMapPins } from '../__redux__/Actions/REDUX_mapPins.js';
@@ -10,7 +10,12 @@ import { getMapPins, listenMapPins } from '../__redux__/Actions/REDUX_mapPins.js
 export const MapMarkers = ()=>{
   //should listen to the redux store here (the getMapPins needs to be listened to )  
   let [markers, updateMarkers] = useState([]);
-  listenMapPins(updateMarkers); //attach the redux listener to update the markers array every time a redux event occurs. This means that every redux event that updates the markers will re-render the mapmarkers component
+  useEffect(()=>{
+    const listener = listenMapPins(updateMarkers); //attach the map pins listener to the state variable so that it re-renders when the map pins change
+    return function unsub(){
+      listener();
+    }
+  })
   const distance = (lat1, lon1, lat2, lon2, unit) => { //calculates distance given two coordinate pairs
       if ((lat1 == lat2) && (lon1 == lon2)) {
         return(0);

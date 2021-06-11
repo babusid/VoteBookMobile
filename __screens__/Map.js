@@ -9,8 +9,10 @@ import {MapMarkers} from '../__components__/__reactComponents__/mapMarkers';
 export default function MapScreen(){
     const netinfo = useNetInfo();
     useEffect(()=>{ //setup the firebase listener. TODO: configure to return the cleanup function for the firebase listener
-        console.log("Map Screen Effect running: Firebase Listener should be attached")
-        FirebaseMapListener(netinfo);
+        const listener = FirebaseMapListener(netinfo); //create listener when mapscreen renders
+        return function unsub(){
+            listener();
+        }
     })
     return(
         <View style={styles.container}>
