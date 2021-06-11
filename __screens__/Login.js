@@ -28,6 +28,7 @@ export default function LoginScreen({ navigation }){
                             text = parseInt(text);
                             try{
                                 dispatchZipcode(text);
+                                console.log(getZipcode()); //DEBUG
                                 navigation.navigate("root");
                             }catch(err){
                                 Alert.alert(
@@ -36,12 +37,6 @@ export default function LoginScreen({ navigation }){
                                 );
                             } 
                         }}
-                    />
-                </View>
-                <View style={styles.button}>
-                    <Button 
-                        color='blue' 
-                        title='Enter'
                     />
                 </View>
             </Card>

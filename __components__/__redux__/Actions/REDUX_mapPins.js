@@ -20,8 +20,24 @@ export function dispatchMapPins( input ){
 
 /**
  * @brief This function retrieves and returns the stored array of map pins
+ * @returns {Array} Returns an array of JSON objects
  */
 export function getMapPins(){
     var state = rootStore.getState().mapPins;
     return (state)
+}
+
+/**
+ * @brief This function attaches a listener to the map pins array portion of our redux store, and calls a provided function on the array each time a listener event occurs.
+ * @param {Function} eventHandler A callback function to call on the stored map pins every time the listener detects an event. AKA when event detected,
+ *  eventHandler([..]) with the array of map pins that is stored
+ * @returns {import('redux').Unsubscribe} A cleanup function to remove the listener
+ */
+export function listenMapPins(eventHandler){
+    const __listenmappins = () => {
+        var data = getMapPins();
+        eventHandler(data);
+    };
+    const unsub = rootStore.subscribe(__listenmappins);
+    return unsub;
 }

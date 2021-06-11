@@ -1,5 +1,5 @@
 import {dispatchMapPins, getMapPins} from '../__components__/__redux__/Actions/REDUX_mapPins'
-import { jest } from '@jest/globals'
+import { jest, expect, test } from '@jest/globals'
 import * as err from '../__error'
 
 test(
