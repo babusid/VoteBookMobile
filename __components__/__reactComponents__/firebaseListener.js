@@ -28,41 +28,47 @@ let runonce = false;
 let runonceExp = false;
 
 /**
- * @brief This function will take **ONE** snapshot of our Database and push it to the redux store.
- * @warning This function will have to be **called repeatedly to function as a listener**, as it internally uses a snapshot method to get the data from the server. As such, it should be called within an effect method of the calling component
+ * @brief This function will attach a listener to our database that will continually update our redux store as data changes on the server side
  * @param {import('@react-native-community/netinfo').NetInfoState} netinfo object from calling component to let snapshot know whether it should run at all
+ * @returns {Function} Function that will unsubscribe the listener
  */
 export async function FirebaseDataSnapshot(netinfo){
+    let query;
     if(netinfo.isConnected==true){  
         console.log("here")
         const zipcode = getZipcode().toString();
         if (zipcode == undefined){
             throw "Zipcode Undefined in Redux Store for Firebase Data Snapshot";
         }
-        const zipcodeRef = FireDB.collection("AppDown");
-        const query = zipcodeRef.where('zip', '==', zipcode).get();
-        await query; 
-        query.then((qres)=>{
-            if (qres.empty){ //no pins to be stored
-                console.log("No pins for this zipcode found in DB.");
-                Alert.alert("Sorry, we were unable to download any polling locations for this zipcode from our database.");
-                let blank = [];
-                dispatchMapPins(blank);
-                return ; //nothing important put into the store
-            }
-            const dataArr = qres.forEach((doc)=>{
-                return doc.data();
-            })
-            if(dataArr!= getMapPins()){ 
-                dispatchMapPins(dataArr); 
-                console.log(getMapPins());
+        query = FireDB.collection("AppDown").where('zip', '==', zipcode).onSnapshot(
+            (qres)=>{
+                if (qres.empty){ //no pins to be stored
+                    console.log("No pins for this zipcode found in DB.");
+                    Alert.alert("Sorry, we were unable to download any polling locations for this zipcode from our database.");
+                    let blank = [];
+                    dispatchMapPins(blank);
+                    return; //nothing important put into the store
+                }
+                const dataArr = qres.forEach((doc)=>{
+                    return doc.data();
+                })
+                if(dataArr!= getMapPins()){ 
+                    dispatchMapPins(dataArr); 
+                    console.log(getMapPins()); //DEBUG
+                }
                 return;
-            }
-        });
+            },
+            (error)=>{
+                console.log("Firebase Listener has an error (firebaseListener.js:48): \n");
+                console.log(error);
+                console.log("\n");
+            },
+        );
     }else if (!runonce){
         Alert.alert("Internet not reachable, we cannot render the pins")
         runonce = true; 
     }
+    return query; //return query as a cleanup function for the listener
 }
 
 
