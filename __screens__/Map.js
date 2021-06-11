@@ -2,14 +2,14 @@ import { useNetInfo } from '@react-native-community/netinfo';
 import React, { useEffect } from 'react';
 import { StyleSheet, Text, View, Dimensions } from 'react-native';
 import MapView from 'react-native-maps';
-import { FirebaseDataSnapshot } from '../__components__/__reactComponents__/firebaseListener';
+import { FirebaseMapListener } from '../__components__/__reactComponents__/firebaseListener';
 import {MapMarkers} from '../__components__/__reactComponents__/mapMarkers';
 
 
 export default function MapScreen(){
     const netinfo = useNetInfo();
     useEffect(()=>{ //setup the firebase listener and return the cleanup function
-        let cleanup = FirebaseDataSnapshot(netinfo);
+        let cleanup = FirebaseMapListener(netinfo);
         return cleanup();
     })
     return(

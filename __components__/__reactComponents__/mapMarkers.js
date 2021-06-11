@@ -1,11 +1,13 @@
-import React from 'react';
-import { StyleSheet, Text, View, Dimensions, Button } from 'react-native';
+import React, { useState} from 'react';
+import { StyleSheet, Text, Button } from 'react-native';
 import { Marker, Callout } from 'react-native-maps';
-import { getMapPins } from '../__redux__/Actions/REDUX_mapPins.js';
+import { listenMapPins } from '../__redux__/Actions/REDUX_mapPins.js';
 
-export const MapMarkers=(props)=>{
-    //var markers = getMapPins();
-    var markers = [{title:"Location 1", latitude: 1, longitude: 2, siteID:0, waitTime:1},{title:"Location 2", latitude: 2, longitude:1,siteID:1, waitTime: 1.5}];
+export const MapMarkers = (props)=>{
+  //should listen to the redux store here (the getMapPins needs to be listened to )  
+  let [markers, updateMarkers] = useState();
+  listenMapPins(updateMarkers); //attach the redux listener to update the markers array every time a redux event occurs
+  //var markers = [{title:"Location 1", latitude: 1, longitude: 2, siteID:0, waitTime:1},{title:"Location 2", latitude: 2, longitude:1,siteID:1, waitTime: 1.5}];
     const distance = (lat1, lon1, lat2, lon2, unit) => { //calculates distance given two coordinate pairs
         if ((lat1 == lat2) && (lon1 == lon2)) {
           return(0);

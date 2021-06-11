@@ -32,7 +32,7 @@ let runonceExp = false;
  * @param {import('@react-native-community/netinfo').NetInfoState} netinfo object from calling component to let snapshot know whether it should run at all
  * @returns {Function} Function that will unsubscribe the listener
  */
-export async function FirebaseDataSnapshot(netinfo){
+export async function FirebaseMapListener(netinfo){
     let query;
     if(netinfo.isConnected==true){  
         console.log("here")
