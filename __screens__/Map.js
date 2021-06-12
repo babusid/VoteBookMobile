@@ -1,13 +1,54 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import rootStore from "../__components__/__redux__/store.js"
+import { useNetInfo } from '@react-native-community/netinfo';
+import React, { useEffect } from 'react';
+import { StyleSheet, Text, View, Dimensions } from 'react-native';
+import MapView from 'react-native-maps';
+import { FirebaseMapListener } from '../__components__/__reactComponents__/firebaseListener';
+import {MapMarkers} from '../__components__/__reactComponents__/mapMarkers';
 
 
 export default function MapScreen(){
-    return (
-        <View>
-            <Text>This is where the Map Screen should be exported from</Text>
+    const netinfo = useNetInfo();
+    useEffect(()=>{ //setup the firebase listener. TODO: configure to return the cleanup function for the firebase listener
+        const listener = FirebaseMapListener(netinfo); //create listener when mapscreen renders
+        return function unsub(){
+            listener();
+        }
+    })
+    return(
+        <View style={styles.container}>
+            <MapView 
+                style={styles.map} 
+                showsUserLocation={true} 
+                showsMyLocationButton={true} 
+                showsCompass={true} 
+                initialRegion = {
+                    { latitudeDelta: 0.922,
+                      longitudeDelta: 0.421, 
+                      latitude: 0, 
+                      longitude: 0
+                      // TO-DO: wire latitude and longitude to the location 
+                      // of the phone to center map at user's location
+                    }} 
+                showsTraffic = {true}
+            >
+                <MapMarkers/>
+            </MapView>
         </View>
     )
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: '#FFFFFF',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+    },
+    button: {
+        padding: 15,
+    },
+    map: {
+        width: Dimensions.get('window').width,
+        height: Dimensions.get('window').height,
+    }
+});
