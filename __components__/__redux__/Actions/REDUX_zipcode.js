@@ -1,6 +1,7 @@
 import { rootStore } from '../store.js'
 import { createAction } from '@reduxjs/toolkit'
 import {IntThrowException,zipCodeLengthException} from '../../../__error'
+import persistCombineReducers from 'redux-persist/es/persistCombineReducers';
 
 
 /**
@@ -25,7 +26,8 @@ export function dispatchZipcode( input ){
       type: 'zipcodeDispatch',
       payload: input, 
     }
-  rootStore.dispatch(zipcodeDispatch);   
+  rootStore.store.dispatch(zipcodeDispatch);
+  persistor.flush();
   }
 }
 
@@ -34,6 +36,11 @@ export function dispatchZipcode( input ){
  * @returns {Number} zipcode
  */
 export function getZipcode(){
-  var state = rootStore.getState().zipcode;
-  return state;
+  var state = rootStore.store.getState().zipcode;
+  if (state==undefined){
+    throw null;
+  }
+  else{
+    return (state);
+  } 
 }
