@@ -27,7 +27,16 @@ export function dispatchZipcode( input ){
       payload: input, 
     }
   rootStore.store.dispatch(zipcodeDispatch);
-  persistor.flush();
+  let prom = rootStore.persistor.flush();
+  prom.then(
+    (onFulfill)=>{
+      return;
+    },
+    (onReject)=>{
+      console.log("Disk Store Failed in Zipcode Dispatch")
+      return;
+    }
+  );
   }
 }
 

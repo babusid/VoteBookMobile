@@ -1,4 +1,4 @@
-import { createStore, applyMiddleware } from "redux"
+import { createStore } from "redux"
 import { zipcodeReducer } from './Reducers/zipcodeReducer'
 import { mapPinsReducer } from "./Reducers/mapPinsReducer"
 import { persistStore, persistCombineReducers } from "redux-persist";
@@ -22,43 +22,20 @@ function rootReducer(state, action){
     )
 }
 
-/**
- * @brief This persists the current root reducer. It configures the persistence as being the persistence secure storage for 
- * root reducer. Then, it creates a root reducer variable that is assigned the most recent zipcode and map pin information from
- * the root reducer. Lastly, it configures this new store in a function that packages this information to be "exported".
- * 
- */
-
 const storage = createSecureStore();
+const config = {
+  key: "root_VB*!?",
+  storage,
+};
 
- const config = {
-    key: "root_VB*!?",
-    storage
-  };
-  
-  const rootReducerPersist = persistCombineReducers(config, rootReducer);
-  
-  function configureStore() {
-    const store = createStore(rootReducerPersist);
-    const persistor = persistStore(store); //TO DO: LINK UNUSED PERSISTSTORE CALLBACK FUNCTIONALITY TO RENDERING APP
-    return { persistor, store };
-  }
+const persistedReducer = persistReducer(config,rootReducer);
+
 /**
- * @brief This function is a debug function that will log the output of every dispatched action
- * and the state of the redux store after each dispatched action. 
+ * @type {import("redux").Store}
  */
-function reduxLogger({ getState }){
-    return next => action => {
-        console.log('will dispatch', action)
-        const returnValue = next(action)
-        console.log('state after dispatch', getState())
-        return returnValue
-      }
+const store = createStore(persistedReducer);
+const persistor = persistStore(store);
+export const rootStore = {
+  store: store,
+  persistor: persistor,
 }
-
-/**
- * @brief This is the root store of our application, that should be imported into every file that requires dealing with the state.
- * The root reducer of this store is contained in store.js, and each reducer written for specific state actions must be linked into the root reducer.
- * @type {import("redux").Store} 
- */
-export const rootStore = configureStore();
