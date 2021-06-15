@@ -6,7 +6,7 @@
  */
 export const locationReducer = (state, action)=> {
     if (action.type!="locationUpdate"){
-        return;
+        return state;
     }
     return action.payload;
 }
