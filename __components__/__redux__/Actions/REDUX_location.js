@@ -23,7 +23,7 @@ export const getStoredLocation = ()=>{
 /**
  * @brief Attaches a listener to the user location portion of our redux store, and runs the eventhandler callback on the stored location everytime there is an update.
  * @param {Function} eventhandler CallBack funciton to run on the stored user location everytime the redux store updates
- * @returns {Function} Cleanup function to unsubscribe to listener 
+ * @returns Cleanup function to unsubscribe to listener 
  */
 export const listenUserLocation = (eventhandler) => {
     const __listenuserlocation = () =>{
