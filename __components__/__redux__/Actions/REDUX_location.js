@@ -1,19 +1,15 @@
 import { rootStore } from "../store";
 
 /**
- * @brief this constructor will return the action object to dispatch that will get handled by the reducer
- */
-export const reduxLocationType = (__payload) => {
-    this.type = "locationUpdate";
-    this.payload = __payload;
-}
-
-/**
  * @brief Dispatches the provided  location object to our redux store
  * @param {import("expo-location").LocationObject} Loc
  */
 export const dispatchStoreLocation = (Loc) => {
-    const disp = new reduxLocationType(Loc);
+    const disp = {
+        type:"locationUpdate",
+        payload:Loc
+    };
+    // console.log("store dispatch hit"); //DEBUG
     rootStore.dispatch(disp);
 }
 
@@ -31,7 +27,7 @@ export const getStoredLocation = ()=>{
  */
 export const listenUserLocation = (eventhandler) => {
     const __listenuserlocation = () =>{
-        let loc = getUserLocation();
+        let loc = getStoredLocation();
         eventhandler(loc);
     }
     const sub = rootStore.subscribe(__listenuserlocation);
