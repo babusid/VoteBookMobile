@@ -1,6 +1,6 @@
 import { useNetInfo } from '@react-native-community/netinfo';
 import React, { useEffect } from 'react';
-import { StyleSheet, Text, View, Dimensions } from 'react-native';
+import { StyleSheet, View, Dimensions } from 'react-native';
 import MapView from 'react-native-maps';
 import { FirebaseMapListener } from '../__components__/__reactComponents__/firebaseListener';
 import {MapMarkers} from '../__components__/__reactComponents__/mapMarkers';
@@ -24,8 +24,8 @@ export default function MapScreen(){
                 showsMyLocationButton={true} 
                 showsCompass={true} 
                 initialRegion = {
-                    { latitudeDelta: 0.922,
-                      longitudeDelta: 0.421, 
+                    { latitudeDelta: 0.5,
+                      longitudeDelta: 0.2, 
                       latitude: initReg.coords.latitude, 
                       longitude: initReg.coords.longitude
                     }} 
