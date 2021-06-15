@@ -1,15 +1,11 @@
-import { StatusBar } from 'expo-status-bar';
 import React, { useEffect } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { rootStore } from './__components__/__redux__/store.js'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
 import BallotPlanner from './__screens__/BallotPlanner'
 import MapScreen from './__screens__/Map'
 import LoginScreen from './__screens__/Login.js'
-import { locationListener, locationListenerCleanup } from './__components__/__reactComponents__/locationListener.js';
-import { getStoredLocation, listenUserLocation } from './__components__/__redux__/Actions/REDUX_location.js';
+import { locationListener } from './__components__/__reactComponents__/locationListener.js';
 
 const rootStack = createStackNavigator();
 const rootTab = createBottomTabNavigator();
