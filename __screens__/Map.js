@@ -4,9 +4,11 @@ import { StyleSheet, Text, View, Dimensions } from 'react-native';
 import MapView from 'react-native-maps';
 import { FirebaseMapListener } from '../__components__/__reactComponents__/firebaseListener';
 import {MapMarkers} from '../__components__/__reactComponents__/mapMarkers';
+import {getStoredLocation} from '../__components__/__redux__/Actions/REDUX_location'
 
 
 export default function MapScreen(){
+    const initReg = getStoredLocation();
     const netinfo = useNetInfo();
     useEffect(()=>{ //setup the firebase listener. TODO: configure to return the cleanup function for the firebase listener
         const listener = FirebaseMapListener(netinfo); //create listener when mapscreen renders
@@ -24,10 +26,8 @@ export default function MapScreen(){
                 initialRegion = {
                     { latitudeDelta: 0.922,
                       longitudeDelta: 0.421, 
-                      latitude: 0, 
-                      longitude: 0
-                      // TO-DO: wire latitude and longitude to the location 
-                      // of the phone to center map at user's location
+                      latitude: initReg.coords.latitude, 
+                      longitude: initReg.coords.longitude
                     }} 
                 showsTraffic = {true}
             >
