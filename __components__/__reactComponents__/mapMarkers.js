@@ -2,6 +2,8 @@ import React, { useEffect, useState} from 'react';
 import { StyleSheet, Text, Button } from 'react-native';
 import { Marker, Callout } from 'react-native-maps';
 import { getMapPins, listenMapPins } from '../__redux__/Actions/REDUX_mapPins.js';
+import { useNavigation} from '@react-navigation/native';
+import ReportScreen from './__screens__/ReportScreen.js';
 
 
 /**
@@ -38,6 +40,7 @@ export const MapMarkers = ()=>{
         return(dist);
       }
   }
+  const navigation = useNavigation();
   return(
       markers.map(
           (marker) => 
@@ -45,7 +48,10 @@ export const MapMarkers = ()=>{
                   key={marker.siteID}
                   coordinate={{ latitude: parseInt(marker.latitude), longitude: parseInt(marker.longitude) }}
               >
-                <Callout>
+                <Callout 
+                  onPress={() =>{
+                    navigation.navigate("Report Wait Time");
+                }}>
                   <Text style={styles.title}>{marker.title}</Text>
                   <Text>Wait Time: {marker.waitTime} Hours</Text>
                   <Button title={"Report Wait Time"}/>
