@@ -1,6 +1,7 @@
 import { createStore, applyMiddleware } from "redux"
 import { zipcodeReducer } from './Reducers/zipcodeReducer'
 import { mapPinsReducer } from "./Reducers/mapPinsReducer"
+import {locationReducer} from "./Reducers/locationReducer"
 
 
 /**
@@ -14,7 +15,8 @@ function rootReducer(state, action){
     return (
         {
             zipcode: zipcodeReducer(state.zipcode, action),
-            mapPins:mapPinsReducer(state.mapPins,action)
+            mapPins:mapPinsReducer(state.mapPins,action),
+            userLocation:locationReducer(state.userLocation,action)
         }
     )
 }
