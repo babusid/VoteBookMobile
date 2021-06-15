@@ -2,7 +2,7 @@ import { useNetInfo } from '@react-native-community/netinfo';
 import React, { useEffect } from 'react';
 import { StyleSheet, View, Dimensions } from 'react-native';
 import MapView from 'react-native-maps';
-import { FirebaseMapListener } from '../__components__/__reactComponents__/firebaseListener';
+import { FirebaseMapListener } from '../__components__/__JScomponents__/firebaseListener';
 import {MapMarkers} from '../__components__/__reactComponents__/mapMarkers';
 import {getStoredLocation} from '../__components__/__redux__/Actions/REDUX_location'
 
