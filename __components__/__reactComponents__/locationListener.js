@@ -1,28 +1,26 @@
 import * as Location from 'expo-location'
 import { Alert } from 'react-native';
+import { dispatchStoreLocation } from '../__redux__/Actions/REDUX_location';
 
 
 /**
  * @brief Attaches a location listener that if permissions are granted updates the Redux store with the users location every half second
- * @returns {Function} cleanup function
+ * @returns Returns a promise that will resolve to an object containing the cleanup function for this listener
  */
-export const locationListener = ()=>{
-    const status = await Location.requestForegroundPermissionsAsync();
-    if(status!='granted'){
+export const locationListener = async()=>{
+    const response = await Location.requestForegroundPermissionsAsync();
+    if(response.status!='granted'){
         Alert.alert("Without Permission to access your location, our map features will not work. Please enable location permissions in settings.");
         return;
     }
     const cleanup = Location.watchPositionAsync(
         {
-            accuracy: Location.Accuracy.High,
-            timeInterval:500,
-            distanceInterval:20,
+            accuracy: Location.Accuracy.High
         },
         (LocationObject)=>{
             //dispatch it to redux store here
+            dispatchStoreLocation(LocationObject);
         },
     );
-    cleanup.then((resolve)=>{
-        return resolve.remove;
-    });
+    return cleanup; //TODO: get cleanup function working
 }
