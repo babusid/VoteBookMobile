@@ -2,7 +2,7 @@ import { createStore, applyMiddleware } from "redux"
 import { zipcodeReducer } from './Reducers/zipcodeReducer'
 import { mapPinsReducer } from "./Reducers/mapPinsReducer"
 import {locationReducer} from "./Reducers/locationReducer"
-import {pushID_Reducer} from "./Reducers/pushID_Reducer"
+import {pushID_Reducer} from "./Reducers/pushIDReducer"
 
 
 /**
