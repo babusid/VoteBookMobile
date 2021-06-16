@@ -4,24 +4,37 @@ import { Button, Card } from 'react-native-elements';
 
 
 export default function ReportScreen({ navigation }){
+
     return(
         <View style={styles.container}>
             <Card>
                 <Text style={styles.text}>
                     Please select the estimated wait time for this polling location.
                 </Text>
+                <Text style={styles.text}>
+                    Please Swipe right to return without reporting.
+                </Text>
 
                 <View style={styles.button}>
                   <Button 
                     style={styles.button}
                     title="15 Minutes"
-                    onPress={() =>{Alert.alert("15 Minutes Pressed"), console.log("15 Minutes")}}
+                    onPress={() =>{
+                        Alert.alert("15 Minutes Pressed");
+                        console.log("15 Minutes");
+                        navigation.navigate("root")
+
+                    }}
                 />
                 <View style={styles.space} />
                 <Button 
                     style={styles.button}
                     title="30 Minutes"
-                    onPress={() =>{Alert.alert("30 Minutes Pressed"), console.log("30 Minutes")}}
+                    onPress={() =>{
+                        Alert.alert("30 Minutes Pressed");
+                        console.log("30 Minutes");
+                        navigation.navigate("root")
+                    }}
                 />
                 </View>
 
@@ -29,13 +42,22 @@ export default function ReportScreen({ navigation }){
                   <Button 
                     style={styles.button}
                     title="45 Minutes"
-                    onPress={() =>{Alert.alert("45 Minutes Pressed"), console.log("45 Minutes")}}
+                    onPress={() =>{
+                        Alert.alert("45 Minutes Pressed");
+                        console.log("45 Minutes");
+                        navigation.navigate("root")
+                    }}
                 />
                 <View style={styles.space} />
                 <Button 
                     style={styles.button}
                     title="1 Hour"
-                    onPress={() =>{Alert.alert("1 Hour Pressed"), console.log("1 Hour")}}
+                    onPress={() =>{
+                        Alert.alert("1 Hour Pressed");
+                        console.log("1 Hour");
+                        navigation.navigate("root")
+                    
+                    }}
                 />
                 </View>
 
@@ -43,13 +65,21 @@ export default function ReportScreen({ navigation }){
                   <Button 
                     style={styles.button}
                     title="1.5 Hours"
-                    onPress={() =>{Alert.alert("1.5 Hours Pressed"), console.log("1.5 Hours")}}
+                    onPress={() =>{
+                        Alert.alert("1.5 Hours Pressed");
+                        console.log("1.5 Hours");
+                        navigation.navigate("root");
+                    }}
                 />
                 <View style={styles.space} />
                 <Button 
                     style={styles.button}
                     title="2 Hours"
-                    onPress={() =>{Alert.alert("2 Hours Pressed"), console.log("2 Hours")}}
+                    onPress={() =>{
+                        Alert.alert("2 Hours Pressed");
+                        console.log("2 Hours");
+                        navigation.navigate("root");
+                    }}
                 />
                 </View>
             </Card>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState} from 'react';
 import { StyleSheet, Text, Button } from 'react-native';
 import { Marker, Callout } from 'react-native-maps';
-import { getMapPins, listenMapPins } from '../__redux__/Actions/REDUX_mapPins.js';
+import { listenMapPins } from '../__redux__/Actions/REDUX_mapPins.js';
 import { useNavigation} from '@react-navigation/native';
 
 
