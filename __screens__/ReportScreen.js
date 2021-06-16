@@ -1,10 +1,16 @@
 import React from 'react';
 import { StyleSheet, Text, View, Alert, Dimensions } from 'react-native';
 import { Button, Card } from 'react-native-elements';
+import { FirebasePush } from '../__components__/__JScomponents__/firebasePush';
 
 
 export default function ReportScreen({ navigation }){
-
+    const on_Press_function = (time) =>{
+        Alert.alert(`${time} Minutes Pressed`);
+        console.log(`${time} Minutes Pressed`);
+        FirebasePush(time);
+        navigation.navigate("root");
+    }
     return(
         <View style={styles.container}>
             <Card>
@@ -20,10 +26,7 @@ export default function ReportScreen({ navigation }){
                     style={styles.button}
                     title="15 Minutes"
                     onPress={() =>{
-                        Alert.alert("15 Minutes Pressed");
-                        console.log("15 Minutes");
-                        navigation.navigate("root")
-
+                        on_Press_function(15);
                     }}
                 />
                 <View style={styles.space} />
@@ -31,9 +34,7 @@ export default function ReportScreen({ navigation }){
                     style={styles.button}
                     title="30 Minutes"
                     onPress={() =>{
-                        Alert.alert("30 Minutes Pressed");
-                        console.log("30 Minutes");
-                        navigation.navigate("root")
+                        on_Press_function(30);
                     }}
                 />
                 </View>
@@ -43,9 +44,7 @@ export default function ReportScreen({ navigation }){
                     style={styles.button}
                     title="45 Minutes"
                     onPress={() =>{
-                        Alert.alert("45 Minutes Pressed");
-                        console.log("45 Minutes");
-                        navigation.navigate("root")
+                        on_Press_function(45);
                     }}
                 />
                 <View style={styles.space} />
@@ -53,10 +52,7 @@ export default function ReportScreen({ navigation }){
                     style={styles.button}
                     title="1 Hour"
                     onPress={() =>{
-                        Alert.alert("1 Hour Pressed");
-                        console.log("1 Hour");
-                        navigation.navigate("root")
-                    
+                        on_Press_function(60)
                     }}
                 />
                 </View>
@@ -66,9 +62,7 @@ export default function ReportScreen({ navigation }){
                     style={styles.button}
                     title="1.5 Hours"
                     onPress={() =>{
-                        Alert.alert("1.5 Hours Pressed");
-                        console.log("1.5 Hours");
-                        navigation.navigate("root");
+                        on_Press_function(90);
                     }}
                 />
                 <View style={styles.space} />
@@ -76,9 +70,7 @@ export default function ReportScreen({ navigation }){
                     style={styles.button}
                     title="2 Hours"
                     onPress={() =>{
-                        Alert.alert("2 Hours Pressed");
-                        console.log("2 Hours");
-                        navigation.navigate("root");
+                        on_Press_function(120);
                     }}
                 />
                 </View>
