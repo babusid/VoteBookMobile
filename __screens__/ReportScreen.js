@@ -4,7 +4,6 @@ import { Button, Card } from 'react-native-elements';
 
 
 export default function ReportScreen({ navigation }){
-    const windowWidth = Dimensions.get('window').width;
     return(
         <View style={styles.container}>
             <Card>
@@ -77,6 +76,6 @@ const styles = StyleSheet.create({
         justifyContent: 'space-evenly',
     },
     space: {
-        width: windowWidth / 3,
+        width: Dimensions.get('window').width / 3,
     }
 });
