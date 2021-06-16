@@ -2,6 +2,7 @@ import { createStore, applyMiddleware } from "redux"
 import { zipcodeReducer } from './Reducers/zipcodeReducer'
 import { mapPinsReducer } from "./Reducers/mapPinsReducer"
 import {locationReducer} from "./Reducers/locationReducer"
+import {pushID_Reducer} from "./Reducers/pushID_Reducer"
 
 
 /**
@@ -16,7 +17,8 @@ function rootReducer(state, action){
         {
             zipcode: zipcodeReducer(state.zipcode, action),
             mapPins:mapPinsReducer(state.mapPins,action),
-            userLocation:locationReducer(state.userLocation,action)
+            userLocation:locationReducer(state.userLocation,action),
+            pushID: pushID_Reducer(state.pushID,action)
         }
     )
 }

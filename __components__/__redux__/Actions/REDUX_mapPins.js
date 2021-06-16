@@ -18,6 +18,7 @@ export function dispatchMapPins( input ){
     rootStore.dispatch(mapPinsDispatch);
 }
 
+
 /**
  * @brief This function retrieves and returns the stored array of map pins
  * @returns {Array} Returns an array of JSON objects
@@ -40,4 +41,23 @@ export function listenMapPins(eventHandler){
     };
     const unsub = rootStore.subscribe(__listenmappins);
     return unsub;
+}
+
+/**
+ * @brief This function is meant to push the key value of a marker (from mapmarkers.js) to the redux store
+ * @param {String} pushID
+ */
+ export function dispatchPushId(pushID){
+    const disp = {
+        type:"waitTimeReportID",
+        payload: pushID
+    }
+    rootStore.dispatch(disp);
+}
+/**
+ * @brief This functions gets the pushID of the marker that was pressed from the redux store
+ * @returns {String} pushId
+ */
+export function getPushId(){
+    return rootStore.getState.pushID;
 }
