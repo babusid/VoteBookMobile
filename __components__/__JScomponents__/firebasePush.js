@@ -1,22 +1,17 @@
 import { FireDB } from "./firebaseConfig";
+import { getPushId } from "../__redux__/Actions/REDUX_mapPins";
 import firebase from 'firebase/app'
 import 'firebase/firestore';
 
-/**
- * @brief function to construct a timestamped payload to send through our FirebasePush function to report wait times. 
- * @param {Number} payload The payload should be a **number** indicating the wait time in minutes.
- */
-export const FirebasePacket = (payload)=>{
-    return {
-        "payload": payload,
-        "timestamp": Date.now(),
-    };
-}
 
 /**
  * @brief This function 
- * @param {FirebasePacket} packet
+ * @param {Number} packet
+ * @returns {Promise} will resolve when the push succeeds
  */
 export const FirebasePush = async(packet)=>{
-    
+    return FireDB.collection("waitReport").doc(getPushId()).set(
+        {[Date.now()]:packet},
+        {merge:true}
+    );
 }
