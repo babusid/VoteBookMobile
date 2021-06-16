@@ -5,6 +5,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
 import BallotPlanner from './__screens__/BallotPlanner'
 import MapScreen from './__screens__/Map'
 import LoginScreen from './__screens__/Login.js'
+import ReportScreen from './__screens__/ReportScreen.js';
 import { locationListener } from './__components__/__reactComponents__/locationListener.js';
 
 const rootStack = createStackNavigator();
@@ -26,6 +27,7 @@ export default function App() {
       <rootStack.Navigator headerMode={false}>
         <rootStack.Screen name="LoginScreen" component={LoginScreen}/>
         <rootStack.Screen name="root" component={rootTabNav}/>
+        <rootStack.Screen name="Report Wait Time" component={ReportScreen}/>
       </rootStack.Navigator>
     </NavigationContainer>
   );

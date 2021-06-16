@@ -1,7 +1,5 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import rootStore from "../__components__/__redux__/store.js"
+import { Text, View } from 'react-native';
 
 
 /**
