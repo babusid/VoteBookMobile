@@ -1,20 +1,17 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View, Alert, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, Alert, Dimensions } from 'react-native';
 import { Button, Card } from 'react-native-elements';
-import rootStore from "../__components__/__redux__/store.js";
-import { useNavigation} from '@react-navigation/native';
 
 
 export default function ReportScreen({ navigation }){
-    const navigation = useNavigation();
+    const windowWidth = Dimensions.get('window').width;
     return(
-        <ScrollView>
+        <View style={styles.container}>
             <Card>
-            <View style={styles.container}>
                 <Text style={styles.text}>
                     Please select the estimated wait time for this polling location.
                 </Text>
+
                 <View style={styles.button}>
                   <Button 
                     style={styles.button}
@@ -28,6 +25,7 @@ export default function ReportScreen({ navigation }){
                     onPress={() =>{Alert.alert("30 Minutes Pressed"), console.log("30 Minutes")}}
                 />
                 </View>
+
                 <View style={styles.button}>
                   <Button 
                     style={styles.button}
@@ -41,6 +39,7 @@ export default function ReportScreen({ navigation }){
                     onPress={() =>{Alert.alert("1 Hour Pressed"), console.log("1 Hour")}}
                 />
                 </View>
+
                 <View style={styles.button}>
                   <Button 
                     style={styles.button}
@@ -54,9 +53,8 @@ export default function ReportScreen({ navigation }){
                     onPress={() =>{Alert.alert("2 Hours Pressed"), console.log("2 Hours")}}
                 />
                 </View>
-            </View>
             </Card>
-        </ScrollView>
+        </View>
     )
 }
 
@@ -64,7 +62,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#FFFFFF',
-        alignItems: 'center',
+        justifyContent: 'center',
     },
     text: {
         fontWeight: 'bold',
@@ -79,6 +77,6 @@ const styles = StyleSheet.create({
         justifyContent: 'space-evenly',
     },
     space: {
-        width: 250,
+        width: windowWidth / 3,
     }
 });

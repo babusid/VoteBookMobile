@@ -3,7 +3,6 @@ import { StyleSheet, Text, Button } from 'react-native';
 import { Marker, Callout } from 'react-native-maps';
 import { getMapPins, listenMapPins } from '../__redux__/Actions/REDUX_mapPins.js';
 import { useNavigation} from '@react-navigation/native';
-import ReportScreen from './__screens__/ReportScreen.js';
 
 
 /**
@@ -11,6 +10,7 @@ import ReportScreen from './__screens__/ReportScreen.js';
  */
 export const MapMarkers = ()=>{
   //should listen to the redux store here (the getMapPins needs to be listened to )  
+  const navigation = useNavigation();
   let [markers, updateMarkers] = useState([]);
   useEffect(()=>{
     const listener = listenMapPins(updateMarkers); //attach the map pins listener to the state variable so that it re-renders when the map pins change
@@ -40,7 +40,6 @@ export const MapMarkers = ()=>{
         return(dist);
       }
   }
-  const navigation = useNavigation();
   return(
       markers.map(
           (marker) => 
