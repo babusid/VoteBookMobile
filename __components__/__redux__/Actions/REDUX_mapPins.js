@@ -59,5 +59,5 @@ export function listenMapPins(eventHandler){
  * @returns {String} pushId
  */
 export function getPushId(){
-    return rootStore.getState.pushID;
+    return rootStore.getState().pushID;
 }

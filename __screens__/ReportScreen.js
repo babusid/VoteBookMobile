@@ -1,13 +1,13 @@
 import React from 'react';
-import { StyleSheet, Text, View, Alert, Dimensions } from 'react-native';
+import { StyleSheet, Text, View, Dimensions } from 'react-native';
 import { Button, Card } from 'react-native-elements';
 import { FirebasePush } from '../__components__/__JScomponents__/firebasePush';
+import { getPushId } from '../__components__/__redux__/Actions/REDUX_mapPins';
 
 
 export default function ReportScreen({ navigation }){
-    const on_Press_function = (time) =>{
-        Alert.alert(`${time} Minutes Pressed`);
-        console.log(`${time} Minutes Pressed`);
+    const on_Press_function = (time) =>{ //triggers push function with the time of each button
+        console.log(`Firebase push: ${time} Minutes Reported for Pin ${getPushId()}`); //DEBUG
         FirebasePush(time);
         navigation.navigate("root");
     }
