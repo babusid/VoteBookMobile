@@ -1,7 +1,7 @@
 import React, { useEffect, useState} from 'react';
 import { StyleSheet, Text, Button } from 'react-native';
 import { Marker, Callout } from 'react-native-maps';
-import { listenMapPins } from '../__redux__/Actions/REDUX_mapPins.js';
+import { dispatchPushId, listenMapPins } from '../__redux__/Actions/REDUX_mapPins.js';
 import { useNavigation} from '@react-navigation/native';
 
 
@@ -49,6 +49,7 @@ export const MapMarkers = ()=>{
               >
                 <Callout 
                   onPress={() =>{
+                    dispatchPushId(`${marker.siteID}`);
                     navigation.navigate("Report Wait Time");
                 }}>
                   <Text style={styles.title}>{marker.title}</Text>
