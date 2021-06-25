@@ -10,7 +10,7 @@ import 'firebase/firestore';
  * @returns {Promise} will resolve when the push succeeds
  */
 export const FirebasePush = async(packet)=>{
-    return FireDB.collection("waitReport").doc(getPushId()).set(
+    return FireDB.collection("waitReport").doc(`${getPushId()}`).set(
         {[Date.now()]:packet},
         {merge:true}
     );

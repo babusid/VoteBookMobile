@@ -49,7 +49,7 @@ export const MapMarkers = ()=>{
               >
                 <Callout 
                   onPress={() =>{
-                    dispatchPushId(marker.siteID);
+                    dispatchPushId(`${marker.siteID}`);
                     navigation.navigate("Report Wait Time");
                 }}>
                   <Text style={styles.title}>{marker.title}</Text>
