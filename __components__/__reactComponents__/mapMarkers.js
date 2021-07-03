@@ -44,7 +44,7 @@ const distance = (lat1, lon1, lat2, lon2, unit) => {
 /**
  * @brief This function is the onpress function for the callouts. It performs the geofencing and the report cooldown.
  * @param {Number} markerLat 
- * @param {Numer} markerLon 
+ * @param {Number} markerLon 
  * @returns {Boolean} if true, passed the protections, if false, failed the protections
  */
 const calloutPressFunc = (markerLat, markerLon) => {
@@ -72,6 +72,21 @@ const calloutPressFunc = (markerLat, markerLon) => {
     console.log("ready");
   },(30*1000));
   return true;
+}
+
+/**
+ * @brief This function will parse the stored wait time from minutes into a human readable hours:minutes format and return it as a string.
+ * @param {number} waitTime 
+ * @returns {String}
+ */
+const waitTimeParseFunc = (waitTime) => {
+  if(waitTime<60){
+    return (`${waitTime} Minutes`);
+  }
+  let mins = Math.trunc((waitTime%60));
+  let hrs = Math.trunc((waitTime-mins)/60);
+  if(hrs == 1){return (`${hrs} Hour, ${mins} Minutes`);}
+  return (`${hrs} Hours, ${mins} Minutes`);
 }
 
 /**
@@ -104,7 +119,7 @@ export const MapMarkers = ()=>{
                     }
                 }}>
                   <Text style={styles.title}>{marker.title}</Text>
-                  <Text>Wait Time: {marker.waitTime} Hours</Text>
+                  <Text>Wait Time: {waitTimeParseFunc(marker.waitTime)}</Text>
                   <Button title={"Report Wait Time"}/>
                 </Callout>
               </Marker>
