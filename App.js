@@ -40,8 +40,8 @@ export default function App() {
 function rootTabNav(){
   return(
     <rootTab.Navigator>
-      <rootTab.Screen name="ballotPlanner" component={BallotPlanner} options={{title: "Ballot Planner"}}/>
       <rootTab.Screen name="mapScreen" component={MapScreen}/>
+      <rootTab.Screen name="ballotPlanner" component={BallotPlanner} options={{title: "Ballot Planner"}}/>
     </rootTab.Navigator>
   );
 }

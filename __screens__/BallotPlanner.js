@@ -1,6 +1,7 @@
-import React from 'react';
-import { Text, View } from 'react-native';
-
+import React, { useEffect } from 'react';
+import { ScrollView, Text } from 'react-native';
+import { WebView } from 'react-native-webview';
+import { Linking } from 'react-native';
 
 /**
  * @brief - This function is the overall export of the entirety of the ballot planner. 
@@ -11,9 +12,32 @@ import { Text, View } from 'react-native';
  */
 
 export default function BallotPlanner(){
-    return (
-        <View>
-            <Text>This is where the BallotPlanner Screen should be exported from</Text>
-        </View>
-    );
+    
+    const INJECTED_JAVASCRIPT = `
+        const list = (document.querySelectorAll(":not(.holds-the-iframe)"));
+        for(let i=0;i<list.length;++i){
+            list[i].style.visibility="hidden";
+        }
+    ;`
+
+    return(
+        <ScrollView contentContainerStyle={{justifyContent:"center" , paddingTop:30, flexGrow:1}}>
+        <WebView 
+        source={{uri: "https://ballotpedia.org/Sample_Ballot_Lookup"}} 
+        onShouldStartLoadWithRequest={(event)=>{
+            if(event.mainDocumentURL!="https://ballotpedia.org/Sample_Ballot_Lookup"){
+                // console.log(event);
+                Linking.openURL(event.url);
+                return false;
+            }
+            return true;
+        }}
+        injectedJavaScript={INJECTED_JAVASCRIPT}
+        onMessage={(event)=>{
+            const dat = JSON.parse(event.nativeEvent.data);
+            console.log(dat);
+        }}
+        />
+        </ScrollView>
+    )
 }

@@ -11,7 +11,7 @@ import ImagePlaceholder from './Images/ImagePlaceholder.jpg';
  */
 export default function LoginScreen({ navigation }){
     return(
-        <KeyboardAvoidingView behavior={"padding"}>
+        // <KeyboardAvoidingView behavior={"padding"}>
         <ScrollView>
             <Card>
                 <View style={styles.container}>
@@ -41,7 +41,7 @@ export default function LoginScreen({ navigation }){
                 </View>
             </Card>
         </ScrollView>
-        </KeyboardAvoidingView>
+        // </KeyboardAvoidingView>
     )
 }
 

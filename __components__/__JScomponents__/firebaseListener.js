@@ -7,7 +7,7 @@ import { FireDB } from './firebaseConfig.js';
 /**
  * @brief This function will attach a listener to our database that will continually update our redux store as data changes on the server side
  * @param {import('@react-native-community/netinfo').NetInfoState} netinfo object from calling component to let snapshot know whether it should run at all
- * @returns {import('firebase/app').Unsubscribe} Function that will unsubscribe the listener. **The cleanup function is not yet finished**
+ * @returns {()=> void} cleanup function
  */
 export  function FirebaseMapListener(netinfo){
     const zipcode = getZipcode().toString();
