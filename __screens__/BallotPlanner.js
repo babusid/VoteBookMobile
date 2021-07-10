@@ -4,29 +4,39 @@ import { WebView } from 'react-native-webview';
 import { Linking } from 'react-native';
 
 /**
- * @brief - This function is the overall export of the entirety of the ballot planner. 
- * It takes the zip code stored in the redux store object, pings a database of national candidates sorted by zipcode and 
- * displays a drop-down for each position where the user can select a candidate. These selected candidates will be stored
- * to persistent storage, in the same way that the zip code will be from the login screen. This way, when the user opens the app 
- * repeatedly, their selections are persisted.
+ * @brief - This function is the overall export of the entirety of the ballot researcher tool.
+ * Currently, it renders only the sample Ballot tool pulled from BallotPedia. In the future it will be updated to be a nav menu hub screen 
+ * that displays other tools as well.
  */
 
 export default function BallotPlanner(){
-    
+    return(
+        <SampleBallot/>
+    )
+}
+
+/**
+ * 
+ * @returns {JSX.Element} This component will render a trimmed down version of the BallotPedia Ballot Planner website, that links out externally through the device browser
+ * to their website if any link is clicked.
+ */
+function SampleBallot(){
     const INJECTED_JAVASCRIPT = `
-        const list = (document.querySelectorAll(":not(.holds-the-iframe)"));
-        for(let i=0;i<list.length;++i){
-            list[i].style.visibility="hidden";
-        }
+    let list = (document.querySelectorAll("*"));
+    for(let i=0;i<list.length;i++){
+      list[i].style.visibility="hidden";
+    }
+    list = (document.querySelectorAll("*.holds-the-iframe,#myIframe"));
+    for(let i=0;i<list.length;i++){
+      list[i].style.visibility="visible";
+    }
     ;`
 
     return(
-        <ScrollView contentContainerStyle={{justifyContent:"center" , paddingTop:30, flexGrow:1}}>
         <WebView 
         source={{uri: "https://ballotpedia.org/Sample_Ballot_Lookup"}} 
         onShouldStartLoadWithRequest={(event)=>{
             if(event.mainDocumentURL!="https://ballotpedia.org/Sample_Ballot_Lookup"){
-                // console.log(event);
                 Linking.openURL(event.url);
                 return false;
             }
@@ -38,6 +48,5 @@ export default function BallotPlanner(){
             console.log(dat);
         }}
         />
-        </ScrollView>
     )
 }
