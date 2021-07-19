@@ -50,3 +50,7 @@ function SampleBallot(){
         />
     )
 }
+
+function WhoRepresentsMe(){
+    
+}
