@@ -24,7 +24,7 @@ export default function App() {
   })
   return(
     <NavigationContainer>
-      <rootStack.Navigator headerMode={false}>
+      <rootStack.Navigator headerMode={false} screenOptions={{gestureEnabled:false}}>
         <rootStack.Screen name="LoginScreen" component={LoginScreen}/>
         <rootStack.Screen name="root" component={rootTabNav}/>
         <rootStack.Screen name="Report Wait Time" component={ReportScreen}/>
@@ -41,7 +41,7 @@ function rootTabNav(){
   return(
     <rootTab.Navigator>
       <rootTab.Screen name="mapScreen" component={MapScreen}/>
-      <rootTab.Screen name="ballotPlanner" component={BallotPlanner} options={{title: "Ballot Planner"}}/>
+      <rootTab.Screen name="ballotPlanner" component={BallotPlanner} options={{title: "Researcher"}}/>
     </rootTab.Navigator>
   );
 }
